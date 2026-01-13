@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ceo-execution-os"
+version = "0.1.0"
+description = "Personal execution system for high-performance CEOs"
+authors = [{name = "Théo Hermann"}]
+requires-python = ">=3.11"
+dependencies = [
+    "typer[all]>=0.9.0",
+    "rich>=13.7.0",
+    "pydantic>=2.5.3",
+    "sqlalchemy>=2.0.23",
+    "pandas>=2.1.4",
+    "cryptography>=41.0.7",
+]
+
+[project.scripts]
+ceo = "src.cli.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"

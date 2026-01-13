@@ -1,0 +1,40 @@
+# CLI & Core
+typer[all]==0.9.0
+rich==13.7.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.13.1
+
+# Analytics
+pandas==2.1.4
+numpy==1.26.2
+plotly==5.18.0
+scikit-learn==1.3.2
+
+# Security
+cryptography==41.0.7
+python-dotenv==1.0.0
+keyring==24.3.0
+
+# Cloud (optional - install as needed)
+boto3==1.34.10  # AWS
+google-cloud-storage==2.14.0  # GCS
+dropbox==11.36.2  # Dropbox
+
+# Notifications
+schedule==1.2.0
+requests==2.31.0
+
+# Development
+pytest==7.4.3
+pytest-cov==4.1.0
+mypy==1.7.1
+black==23.12.1
+ruff==0.1.8
+
+# Testing
+pytest-mock==3.12.0
+freezegun==1.4.0  # Time mocking for tests
