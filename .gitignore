@@ -1,0 +1,35 @@
+# Sensitive data - NEVER commit
+*.db
+*.db-journal
+*.db-wal
+.env
+*.log
+backups/
+data/
+config/local.yaml
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Jupyter
+.ipynb_checkpoints/
