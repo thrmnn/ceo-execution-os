@@ -102,8 +102,7 @@ def setup():
 @app.command()
 def status():
     """Show current status and metrics."""
-    show_status_header()
-
+    # Status header already shown by callback, just show additional details
     session = get_session()
     try:
         from src.core.metrics import get_active_projects, get_paralysis_rate

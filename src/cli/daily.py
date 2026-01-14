@@ -297,3 +297,53 @@ def show():
 
     finally:
         session.close()
+
+
+@app.command()
+def reset():
+    """Delete today's check-in and start fresh."""
+    session = get_session()
+
+    try:
+        today = date.today()
+        log = session.query(DailyLog).filter(DailyLog.date == today).first()
+
+        if not log:
+            console.print("[yellow]No check-in found for today[/yellow]")
+            console.print("\nNothing to reset. Run: [cyan]ceo daily checkin[/cyan]\n")
+            return
+
+        # Show what will be deleted
+        console.print("\n[bold yellow]⚠️  Reset Today's Check-in[/bold yellow]\n")
+        console.print("This will delete:")
+        if log.mission:
+            console.print(f"  • Mission: {log.mission}")
+        if log.energy:
+            console.print(f"  • Energy: {log.energy}")
+        if log.mission_status:
+            console.print(f"  • Status: {log.mission_status}")
+        console.print()
+
+        # Confirm deletion
+        confirm = Confirm.ask(
+            "[red]Are you sure you want to delete today's entry?[/red]",
+            default=False,
+        )
+
+        if not confirm:
+            console.print("\n[yellow]Reset cancelled[/yellow]\n")
+            return
+
+        # Delete the entry
+        session.delete(log)
+        session.commit()
+
+        console.print("\n[green]✓ Today's entry deleted[/green]")
+        console.print("\nYou can now run: [cyan]ceo daily checkin[/cyan] to start fresh\n")
+
+    except Exception as e:
+        console.print(f"[red]Error: {e}[/red]")
+        session.rollback()
+        raise
+    finally:
+        session.close()

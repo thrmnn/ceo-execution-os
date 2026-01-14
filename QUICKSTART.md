@@ -42,6 +42,15 @@ See overall status:
 python3 -m src.cli.main status
 ```
 
+### Reset Today's Entry
+
+If you made a mistake or want to start over:
+```bash
+python3 -m src.cli.main daily reset
+```
+
+This will delete today's check-in and allow you to start fresh.
+
 ### End of Day
 
 Mark mission complete:
